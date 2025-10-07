@@ -1,0 +1,39 @@
+#include<iostream>
+using namespace std;
+class employee{
+public:
+	virtual double calculatesalary() = 0;
+
+};
+class fulltimeemployee :public employee{
+protected:
+	double fixedsalary;
+public:
+	fulltimeemployee(double salary) :fixedsalary(salary){}
+	double calculatesalary()override{
+		return fixedsalary;
+	}
+
+};
+class parttimeemployee :public employee{
+protected:
+	double hoursworked;
+	double hourlyrate;
+public:
+	parttimeemployee(double hw, double hr) :hoursworked(hw), hourlyrate(hr){};
+	double calculatesalary()override{
+		return hoursworked*hourlyrate;
+	}
+
+};
+int main(){
+	fulltimeemployee emp(50000);
+	parttimeemployee emp1(20, 2);
+	cout << "salary of full time employee :";
+	cout << emp.calculatesalary();
+	cout << endl;
+	cout << "salary of part time employee :";
+	cout << emp1.calculatesalary();
+	system("pause");
+	return 0;
+}
