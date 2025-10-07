@@ -1,0 +1,53 @@
+#include<iostream>
+using namespace std;
+class course{
+public:
+	virtual void duration() = 0;
+	 virtual void area(){
+		cout << "";
+	}
+};
+class onlinecourse:public course{
+private:
+	int weeks;
+	int hoursperweek;
+public:
+	onlinecourse(int w, int h) :weeks(w), hoursperweek(h){}
+	void duration()override{
+		cout << "online class duration :" << weeks << "  weeks " << hoursperweek << " hoursperweeks";
+	}
+
+	void area()override{
+		cout << "online class area" << endl;
+	}
+
+};
+class offlinecourse : public course{
+private:
+	int months;
+	int hourperday;
+public:
+	offlinecourse(int m, int d) :months(m), hourperday(d){}
+	void duration()override{
+		cout << "offline course duration :"
+			<<" "<< months << " months  " << hourperday << "  hours per day ";
+	}
+	void area()override{
+		cout << "offline class area";
+	}
+
+};
+int main(){
+	onlinecourse online(8, 3);
+	offlinecourse offline(5, 3);
+	cout << "online class " << endl;
+	online.duration();
+	cout << endl;
+	online.area();
+	cout << "offline course details" << endl;
+	offline.duration();
+	cout << endl;
+	offline.area();
+	system("pause");
+	return 0;
+}
